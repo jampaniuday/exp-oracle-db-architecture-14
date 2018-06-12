@@ -48,3 +48,9 @@ INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'NEW YORK');
 INSERT INTO DEPT VALUES (20, 'RESEARCH',   'DALLAS');
 INSERT INTO DEPT VALUES (30, 'SALES',      'CHICAGO');
 INSERT INTO DEPT VALUES (40, 'OPERATIONS', 'BOSTON');
+
+
+ALTER table emp add constraint emp_pk primary key(empno);
+ALTER table dept add constraint dept_pk primary key(deptno);
+ALTER table emp add constraint emp_fk_dept foreign key(deptno) references dept;
+ALTER table emp add constraint emp_fk_emp foreign key(mgr) references emp;

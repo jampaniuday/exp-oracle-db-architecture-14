@@ -1,3 +1,4 @@
+alter session set "_ORACLE_SCRIPT"=true;
 connect / as sysdba
 define username=eoda
 define usernamepwd=foo

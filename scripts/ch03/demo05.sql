@@ -3,7 +3,7 @@
 create or replace
   directory data_dir
   as
-  '/orahome/app/oracle/diag/rdbms/ora12cr1/ORA12CR1/trace/'
+  '/opt/oracle/diag/rdbms/orcl/ora12c/trace/'
 /
 
 drop table alert_log;
@@ -23,14 +23,14 @@ CREATE TABLE alert_log
       )
       LOCATION
       (
-          'alert_ORA12CR1.log'
+          'alert_ora12c.log'
       )
   )
   reject limit unlimited
 /
 
-select to_char(last_time,'dd-mon-yyyy hh24:mi') shutdown,
-         to_char(start_time,'dd-mon-yyyy hh24:mi') startup,
+select to_char(last_time,'yyyy-mon-ddThh24:mi') shutdown,
+         to_char(start_time,'yyyy-mon-ddThh24:mi') startup,
          round((start_time-last_time)*24*60,2) mins_down,
          round((last_time-lag(start_time) over (order by r)),2) days_up,
          case when (lead(r) over (order by r) is null )
